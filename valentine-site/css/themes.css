@@ -1,0 +1,58 @@
+/* themes.css - theme toggles and utility classes */
+body.sad .bg-gradient { filter: grayscale(0.3) brightness(0.85); }
+body.sad { background: var(--sad-bg); }
+.fog-layer.sad { opacity: 0.75; }
+.ash-layer.sad { opacity: 0.45; }
+body.sad-heavy { filter: grayscale(0.35) brightness(0.85); }
+body.sad-heavy .bg-gradient { filter: grayscale(0.7) brightness(0.6); }
+body.sad-heavy .card { background: rgba(10, 12, 16, 0.78); }
+body.sad-heavy .btn.yes { box-shadow: none; filter: grayscale(0.6) brightness(0.8); }
+body.sad-heavy .tag,
+body.sad-heavy .sub,
+body.sad-heavy .status { color: rgba(230, 225, 216, 0.6); }
+body.sad-heavy .banner { opacity: 0.15; }
+body.sad-heavy .light-beam { opacity: 0.05; }
+
+body.happy .bg-gradient {
+  background: linear-gradient(160deg, var(--happy-start, #5b1f1f), var(--happy-end, #c94b4b));
+}
+
+.glow { box-shadow: 0 0 12px 4px rgba(241, 194, 125, 0.55); }
+.shrink-away { transform: scale(0.05) !important; opacity: 0 !important; pointer-events: none !important; }
+.shrink-soft { transition: transform 600ms ease-in, opacity 600ms ease-in; }
+.return-soft { transition: transform 420ms ease-out, opacity 420ms ease-out; }
+.grow-soft { transform: scale(var(--yes-max-scale)); transition: transform 520ms ease-in; }
+.grow-reset { transition: transform 420ms ease-out; }
+.avoid { transition: transform 200ms ease; }
+.swap { flex-direction: row-reverse; }
+.disabled { opacity: 0.5; cursor: not-allowed; }
+.shake { animation: shake 0.6s ease; }
+.shake-y { animation: shakeY 0.6s ease; }
+.jitter { animation: jitter 0.35s ease; }
+.heartbeat { animation: heartbeat 0.6s ease; }
+.ui-blink { animation: ui-blink 0.12s ease; }
+.mirror { transform: scaleX(-1); }
+.breathe { animation: breathe-once 0.9s ease; }
+.drift-text { animation: drift-text 1.2s ease; }
+.spiral { animation: fog-spiral 1.2s ease; }
+.ripple {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(241, 194, 125, 0.35);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: ripple 0.9s ease-out forwards;
+}
+.light-crack { animation: light-crack 1.2s ease; opacity: 0; }
+.bounce { animation: bounce-down 0.6s ease; }
+.perspective { animation: perspective-zoom 0.8s ease; }
+.false-reset { animation: false-reset 1s ease; }
+.shadow-turned { animation: shadow-turn 0.9s ease; }
+.layer-slip { transform: translateX(6px); transition: transform 260ms ease; }
+.disintegrate { opacity: 0.6; transition: opacity 300ms ease; }
+.gravity-fail { transform: translateY(14px); transition: transform 240ms ease; }
+.fog-heavy { opacity: 0.85 !important; }
+.ash-only { opacity: 0.6 !important; }
+.desat { filter: grayscale(0.35); }

@@ -1,0 +1,62 @@
+Original prompt: I have provided a video in the Videos tab. When user clicks yes, Video should autoplay with no sound and loops infinitely, stops when user clicks close.
+
+## 2026-02-11
+- Initialized progress tracking for the Yes-page video behavior task.
+- Planned updates for both module runtime (`valentine-site/js/*.js`) and legacy fallback (`valentine-site/js/legacy.js`) to keep parity.
+- Planned service worker cache update to include the Yes-page video asset.
+- Implemented `VIDEO_CONFIG` in `valentine-site/js/config.js` and mirrored it in `valentine-site/js/legacy.js`.
+- Updated `valentine-site/js/sequences.js` and `valentine-site/js/legacy.js` so the Yes-page video:
+  - uses `./assets/videos/YesVid.mp4`
+  - is forced muted (`defaultMuted`, `muted`, `volume = 0`)
+  - autoplays and loops on Yes page open
+  - pauses and resets to time `0` on Yes page close
+- Updated `valentine-site/js/main.js` and `valentine-site/js/legacy.js` `syncMuteUi` to stop remapping video mute state from the global mute toggle.
+- Added `./assets/videos/YesVid.mp4` to `valentine-site/sw.js` cache asset list.
+- Validation blocker: Playwright client could not run because `node` is not installed (`node` command not found).
+- TODO: After installing Node.js, run the develop-web-game Playwright client to verify autoplay, looping, close-stop/reset, and reopen behavior in module and legacy modes.
+- Added device-tier UI sizing in `valentine-site/css/base.css` using CSS variables and breakpoints (`1024px`, `740px`, `420px`, and short-height screens).
+- Scaled shell/card/button/chip/text sizing by device tier so phone UI is not oversized and desktop UI is not undersized.
+- Scaled media sizing by device tier:
+  - Event popup image now uses tiered width/max-width variables.
+  - YES slideshow image now uses tiered width/min-height variables.
+  - YES video wrapper now uses tiered max width/height limits so it fits phones and remains readable on larger screens.
+- Updated small-screen layout behavior at `max-width: 740px` for CTA/button widths and control-chip wrapping.
+- Validation note: runtime visual checks are pending because Node.js/Playwright client is still unavailable in this environment.
+- Installed Node.js LTS (`v24.13.1`) from official Node distribution ZIP into `C:\Users\JN\AppData\Local\Programs\nodejs` after MSI attempts failed.
+- MSI diagnostic summary:
+  - All-users MSI failed with `Error 1925` (insufficient privileges).
+  - Per-user MSI failed with `Error 1310` writing `corepack`.
+  - Verbose logs captured at `%TEMP%\\node-lts-install.log` and `%TEMP%\\node-lts-install-peruser.log`.
+- Added Node directory to user PATH in registry and verified:
+  - `node --version` -> `v24.13.1`
+  - `npm --version` -> `11.8.0`
+  - `npx --version` -> `11.8.0`
+- Implemented fixed slideshow frame sizing for mixed aspect-ratio images:
+  - Added `--yes-image-frame-max-width`, `--yes-image-frame-height`, `--yes-image-frame-padding`, `--yes-image-frame-bg` tokens in `valentine-site/css/base.css`.
+  - Updated `.yes-slideshow` to fixed frame dimensions and `.yes-slideshow img` to `object-fit: contain`.
+  - Added optional non-distorting guard for `.event-image img` (`max-height` + `object-fit: contain`) to avoid tall-image overflow.
+- Installed Playwright runtime in `C:\\Users\\JN\\.codex\\skills\\develop-web-game`:
+  - `npm install playwright --prefix ...`
+  - `npx --prefix ... playwright install chromium`
+- Ran `web_game_playwright_client.js` against local server (`http://127.0.0.1:4173/index.html`) with `#yesBtn` click and saved shots to `output/web-game`:
+  - `shot-0.png`, `shot-1.png`, `shot-2.png`
+  - No console error files were generated (`NO_ERRORS_0/1/2`).
+- Ran additional Yes-page layout measurement and saved `output/web-game/yes-layout-check.json`:
+  - `frameConstant: true`
+  - `pageStable: true`
+- Note: this sandbox session may not inherit updated user PATH automatically; Node is installed and verified at `C:\\Users\\JN\\AppData\\Local\\Programs\\nodejs` and user PATH was updated for new terminals.
+- Prepared project for GitHub Pages publishing:
+  - Renamed root entry file to lowercase `index.html` (case-sensitive host friendly).
+  - Added GitHub Actions Pages workflow at `.github/workflows/deploy-pages.yml` to publish the `valentine-site` folder.
+  - Added `valentine-site/.nojekyll` to avoid Jekyll processing of static files.
+  - Updated `valentine-site/README.md` deployment section with GitHub Actions setup steps.
+- Synced `valentine-site/js/config.js` from the current legacy config section in `valentine-site/js/legacy.js` so module runtime matches legacy content/customizations.
+- Removed event/status label rendering in UI by suppressing `setStatus(...)` output in:
+  - `valentine-site/js/main.js`
+  - `valentine-site/js/legacy.js`
+- Syntax check passed with Node `--check` for:
+  - `valentine-site/js/main.js`
+  - `valentine-site/js/events.js`
+  - `valentine-site/js/sequences.js`
+  - `valentine-site/js/config.js`
+  - `valentine-site/js/legacy.js`

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="description" content="AOT-inspired Valentine question for Ryl with playful cinematic interactions." />
+  <meta name="theme-color" content="#1c1f26" />
+  <title>Ryl, will you be my Valentine?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/themes.css">
+  <link rel="stylesheet" href="./css/animations.css">
+</head>
+<body class="theme-default">
+  <div class="background" aria-hidden="true">
+    <div class="bg-gradient"></div>
+    <div class="vignette"></div>
+    <div class="fog-layer" id="fogLayer"></div>
+    <div class="ash-layer" id="ashLayer"></div>
+    <div class="banner banner-left" id="bannerLeft"></div>
+    <div class="banner banner-right" id="bannerRight"></div>
+    <div class="light-beam" id="lightBeam"></div>
+  </div>
+
+  <main class="shell" id="shell" role="main">
+    <header class="controls">
+      <span class="tag">A simple not so simple site</span>
+      <div class="control-buttons">
+        <button id="muteToggle" class="chip" aria-pressed="false">🔈 Sound on</button>
+        <button id="motionToggle" class="chip" aria-pressed="false">✨ Effects on</button>
+      </div>
+    </header>
+
+    <section class="card prompt" id="promptCard">
+      <p class="eyebrow">ayo whos this amazing individual looking at the screen rn</p>
+      <h1 id="headline">Ryl, will you be my Valentine? 💌</h1>
+      <p class="sub" id="subtext">Even behind the walls… some choices still matter.</p>
+      <div class="cta" id="cta">
+        <button class="btn yes" id="yesBtn" aria-label="Say yes">Yes</button>
+        <button class="btn no" id="noBtn" aria-label="Playful no">No</button>
+      </div>
+      <div class="status" id="status" aria-live="polite"></div>
+      <div id="heartbeatCaption" aria-live="polite"></div>
+    </section>
+
+    <section class="card celebration" id="celebrationCard" aria-live="polite" hidden>
+      <h2>Happy Valentine’s Day, Ryl ❤️</h2>
+      <p class="sub">You are the best</p>
+      <div class="heart-field" id="heartField" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <div class="overlay-message" id="overlayMessage" role="status"></div>
+  <div class="narrator" id="narrator" aria-live="polite">
+    <span id="narratorText"></span>
+  </div>
+  <div class="countdown-bar" id="countdownBar" aria-hidden="true"><span id="countdownText"></span></div>
+  <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
+  <div class="sad-layer" id="sadLayer" aria-hidden="true"></div>
+  <div class="titan-event" id="titanEvent" aria-hidden="true">
+    <div class="titan-wall"></div>
+    <div class="titan-eye"></div>
+    <div class="titan-text">The walls respond…</div>
+  </div>
+  <div class="event-image" id="eventImage" aria-hidden="true">
+    <img src="./assets/images/placeholder.png" alt="Event visual" id="eventImageTag">
+  </div>
+  <div class="crack-layer" id="crackLayer" aria-hidden="true"></div>
+  <div class="yes-page" id="yes-page" aria-hidden="true">
+    <div class="yes-page__inner love-letter" role="dialog" aria-modal="true" aria-label="Valentine celebration">
+      <header class="yes-page__controls">
+        <button class="chip" id="yesPageMute" aria-pressed="false" type="button">Sound on</button>
+        <button class="chip" id="yesPageClose" type="button">Close</button>
+      </header>
+      <div class="love-letter__layout">
+        <div class="love-letter__text">
+          <p class="love-letter__greeting">My dearest Ryl,</p>
+          <div class="yes-message" id="yesMessage">Happy Valentine's Day❤️</div>
+          <p class="love-letter__signature">I am writing to inform you that you are an amazing individual and
+            I would be honored if you would accept my invitation to be my Valentine. well if your seeing this
+            I guess you already said yes lolz. Anyway I hope this little interactive site brought a smile to your face,
+            and remember that you are immaculate and beautiful💖. Have an amazing day and take care. 
+          </p>
+          <div class="love-letter__seal" aria-hidden="true"></div>
+        </div>
+        <div class="love-letter__media">
+          <div class="yes-slideshow" aria-hidden="true">
+            <img id="yesImage" alt="Valentine moment">
+          </div>
+          <div class="yes-video">
+            <video id="yesVideo" playsinline controls preload="metadata"></video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <noscript>
+    <section class="card" style="max-width:720px;margin:40px auto;">
+      <h1>Ryl, will you be my Valentine? 💌</h1>
+      <p>Even behind the walls… some choices still matter.</p>
+      <p>Enable JavaScript to enjoy the interactive experience.</p>
+    </section>
+  </noscript>
+
+  <script src="./js/boot.js" defer></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(console.error));
+    }
+  </script>
+</body>
+</html>

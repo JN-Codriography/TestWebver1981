@@ -1,0 +1,114 @@
+/* animations.css - keyframes and motion helpers */
+@keyframes drift {
+  from { transform: translate3d(-2%, -1%, 0) scale(1.05); }
+  to { transform: translate3d(2%, 1%, 0) scale(1.08); }
+}
+@keyframes fall {
+  from { transform: translateY(-2%); }
+  to { transform: translateY(2%); }
+}
+@keyframes countdown {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+@keyframes confetti {
+  0% { transform: translate3d(0, -20px, 0) rotate(0deg); opacity: 1; }
+  100% { transform: translate3d(0, 220px, 0) rotate(220deg); opacity: 0; }
+}
+@keyframes heart-float {
+  0% { transform: translateY(80px) scale(0.8) rotate(45deg); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(-140px) scale(1) rotate(45deg); opacity: 0; }
+}
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+@keyframes shakeY {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(-8px); }
+  50% { transform: translateY(6px); }
+  75% { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+@keyframes jitter {
+  0%,100% { transform: translate(0,0); }
+  25% { transform: translate(2px,-1px); }
+  50% { transform: translate(-2px,1px); }
+  75% { transform: translate(1px,2px); }
+}
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  20% { transform: scale(1.02); }
+  40% { transform: scale(0.98); }
+  60% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+@keyframes titan-peek {
+  0% { transform: translateY(20px) scale(0.95); opacity: 0; }
+  30% { opacity: 0.2; }
+  100% { transform: translateY(-6px) scale(1); opacity: 0.14; }
+}
+@keyframes crack-pulse {
+  0% { opacity: 0.7; }
+  100% { opacity: 0; }
+}
+@keyframes breathe-once {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+@keyframes drift-text {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
+  100% { transform: translateX(0); }
+}
+@keyframes fog-spiral {
+  0% { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(6deg) scale(1.05); }
+}
+@keyframes banner-ripple {
+  0% { transform: skewX(0deg); }
+  50% { transform: skewX(4deg); }
+  100% { transform: skewX(0deg); }
+}
+@keyframes light-crack {
+  0% { opacity: 0; transform: scaleX(0.6); }
+  40% { opacity: 0.4; transform: scaleX(1); }
+  100% { opacity: 0; transform: scaleX(0.4); }
+}
+@keyframes bounce-down {
+  0% { transform: translateY(0); }
+  60% { transform: translateY(10px); }
+  100% { transform: translateY(0); }
+}
+@keyframes perspective-zoom {
+  0% { transform: perspective(900px) scale(1); }
+  50% { transform: perspective(900px) scale(0.96); }
+  100% { transform: perspective(900px) scale(1); }
+}
+@keyframes false-reset {
+  0% { filter: brightness(1); opacity: 1; }
+  40% { filter: brightness(0.4); opacity: 0.6; }
+  100% { filter: brightness(1); opacity: 1; }
+}
+@keyframes ui-blink {
+  0% { filter: brightness(1); }
+  100% { filter: brightness(0.6); }
+}
+@keyframes ripple {
+  from { transform: scale(0); opacity: 0.5; }
+  to { transform: scale(12); opacity: 0; }
+}
+@keyframes shadow-turn {
+  from { box-shadow: var(--shadow); }
+  to { box-shadow: -12px 24px 60px rgba(0,0,0,0.45); }
+}
+@keyframes sad-fall {
+  0% { transform: translate3d(0, -20px, 0) rotate(-6deg); opacity: 0; }
+  20% { opacity: 0.7; }
+  100% { transform: translate3d(var(--sad-emoji-x, 0px), 260px, 0) rotate(6deg); opacity: 0; }
+}
